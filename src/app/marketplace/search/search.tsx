@@ -6,13 +6,13 @@ export default function CourseCard() {
 
   interface course {
     id: number;
-    Name: string;
-    Description: string;
-    price: Number;
+    name: string;
+    description: string;
+    price: number;
     category: category;
   }
 
-  const data = [
+  const DATA: course[] = [
     {
       id: 0,
       name: "Nils",
@@ -23,22 +23,29 @@ export default function CourseCard() {
     { id: 1, name: "Jim", description: "blah blah", price: 100, category: "C" },
     { id: 2, name: "Tom", description: "blah blah", price: 100, category: "C" },
     { id: 3, name: "Sam", description: "blah blah", price: 100, category: "B" },
+    { id: 4, name: "Bob", description: "blah blah", price: 100, category: "A" },
   ];
 
-  const courseCard = data.map((data) => (
-    <div className={styles.card} key={data.id}>
-      <div className={styles.heading}>{data.name}</div>
-      <div className={styles.content}>
-        <div>{data.description}</div>
-        <div>{data.price}</div>
-        <div>{data.category}</div>
+  const CourseCards: React.FC<{ data: course[] }> = ({ data }) => {
+    return (
+      <div className={styles.layout}>
+        {data.map((data) => (
+          <div className={styles.card} key={data.id}>
+            <div className={styles.heading}>{data.name}</div>
+            <div className={styles.content}>
+              <div>Description: {data.description}</div>
+              <div>Price: {data.price}</div>
+              <div>Category: {data.category}</div>
+            </div>
+          </div>
+        ))}
       </div>
-    </div>
-  ));
+    );
+  };
 
   return (
     <div>
-      <div className={styles.layout}>{courseCard}</div>
+      <CourseCards data={DATA} />
     </div>
   );
 }
