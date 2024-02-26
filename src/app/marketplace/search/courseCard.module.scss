@@ -1,0 +1,23 @@
+
+.layout {
+    display: flex;
+    // flex-wrap: wrap;
+}
+
+
+.card{
+    font-weight: 300;
+    margin: 20px 15px;
+    border-radius: 3px;
+    &:hover{ box-shadow: 0 0 5px #b7b7b7;}
+    background-color: #fff;
+    border: 1px solid #ccc;
+   
+    width: 25rem;
+    .heading{
+        font-size: 1.8em;  padding: .5rem; 
+    }
+    .content  { 
+        padding:.5rem; 
+    } 
+}
