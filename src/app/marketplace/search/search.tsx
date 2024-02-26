@@ -1,9 +1,22 @@
-import React from "react";
+"use client";
+
+// to lower case on both sides for search
+// search to be held in state
+// input value held in state
+
+//have button options for a b c
+// on click set stare a or whatever
+// render the new array filters course cards
+
+import React, { useState } from "react";
 import styles from "./courseCard.module.scss";
+import DATA from "./data";
 
 export default function CourseCard() {
-  type category = "A" | "B" | "C";
+  const [letter, setLetter] = useState<string>("");
 
+  // have interface imported from data file
+  type category = "A" | "B" | "C";
   interface course {
     id: number;
     name: string;
@@ -12,23 +25,25 @@ export default function CourseCard() {
     category: category;
   }
 
-  const DATA: course[] = [
-    {
-      id: 0,
-      name: "Nils",
-      description: "blah blah",
-      price: 100,
-      category: "A",
-    },
-    { id: 1, name: "Jim", description: "blah blah", price: 100, category: "C" },
-    { id: 2, name: "Tom", description: "blah blah", price: 100, category: "C" },
-    { id: 3, name: "Sam", description: "blah blah", price: 100, category: "B" },
-    { id: 4, name: "Bob", description: "blah blah", price: 100, category: "A" },
-  ];
+  // filtering the array depending on the value of letter
+  const setCourseA: course[] = DATA.filter((course) => {
+    return course.category === letter;
+  });
 
+  const handleSetLetterA = () => {
+    setLetter("A");
+  };
+  const handleSetLetterB = () => {
+    setLetter("B");
+  };
+  const handleSetLetterC = () => {
+    setLetter("C");
+  };
+
+  //mapping out the array of objects and displaying as JSX
   const CourseCards: React.FC<{ data: course[] }> = ({ data }) => {
     return (
-      <div className={styles.layout}>
+      <div className={styles.CourseCards}>
         {data.map((data) => (
           <div className={styles.card} key={data.id}>
             <div className={styles.heading}>{data.name}</div>
@@ -45,7 +60,11 @@ export default function CourseCard() {
 
   return (
     <div>
-      <CourseCards data={DATA} />
+      <CourseCards data={setCourseA} />
+
+      <button onClick={handleSetLetterA}>Category A</button>
+      <button onClick={handleSetLetterB}>Category B</button>
+      <button onClick={handleSetLetterC}>Category C</button>
     </div>
   );
 }
