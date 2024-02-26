@@ -25,7 +25,7 @@ export default function CourseCard() {
     { id: 3, name: "Sam", description: "blah blah", price: 100, category: "B" },
   ];
 
-  const cardsMap = data.map((data) => (
+  const courseCard = data.map((data) => (
     <div className={styles.card} key={data.id}>
       <div className={styles.heading}>{data.name}</div>
       <div className={styles.content}>
@@ -38,7 +38,7 @@ export default function CourseCard() {
 
   return (
     <div>
-      <div>{cardsMap}</div>
+      <div className={styles.layout}>{courseCard}</div>
     </div>
   );
 }

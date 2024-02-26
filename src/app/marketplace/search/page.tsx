@@ -4,7 +4,7 @@ import styles from "./courseCard.module.scss";
 
 export default function Search() {
   return (
-    <div className={styles.layout}>
+    <div>
       <CourseCard />
     </div>
   );

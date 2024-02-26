@@ -1,7 +1,7 @@
 
 .layout {
     display: flex;
-    // flex-wrap: wrap;
+    flex-wrap: wrap;
 }
 
 
@@ -13,7 +13,7 @@
     background-color: #fff;
     border: 1px solid #ccc;
    
-    width: 25rem;
+    width: 15rem;
     .heading{
         font-size: 1.8em;  padding: .5rem; 
     }
