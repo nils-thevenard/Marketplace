@@ -19,7 +19,7 @@ export default function FilteredCards() {
   const SearchCards: React.FC = () => {
     const [searchText, setSearchText] = useState<string>("");
     return (
-      <div className={styles.filters}>
+      <div className={styles.SearchFilters}>
         <div className={styles.pageHeading}>
           {searchText == "" && <h1>Course Marketplace</h1>}
           {searchText == "" && <h2>Grow continuously, succeed infinitely</h2>}
@@ -41,7 +41,7 @@ export default function FilteredCards() {
   };
 
   return (
-    <div>
+    <div className={styles.filters}>
       <SearchCards />
       <CourseCards data={filteredData} />
       <button
