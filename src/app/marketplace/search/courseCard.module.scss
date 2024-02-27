@@ -3,6 +3,10 @@
     display: flex;
     flex-wrap: wrap;
     width: 100vw;
+    h1{
+        width: 100vw;
+    }
+    
 }
 
 
@@ -22,3 +26,4 @@
         padding:.5rem; 
     } 
 }
+

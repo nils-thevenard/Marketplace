@@ -1,16 +1,16 @@
 import React from "react";
 
-type category = "A" | "B" | "C";
+export type Category = "A" | "B" | "C";
 
-interface course {
+export interface Course {
   id: number;
   name: string;
   description: string;
   price: number;
-  category: category;
+  category: Category;
 }
 
-const DATA: course[] = [
+const DATA: Course[] = [
   {
     id: 0,
     name: "Nils",
