@@ -1,13 +1,55 @@
 
-.CourseCards {
+.SearchFilters {
     display: flex;
-    flex-wrap: wrap;
-    width: 100vw;
+   flex-direction: column;
+    width: 75vw;
+    align-items: center;
+    margin-top: 4rem;
+
+   
+    .pageHeading{
+        color:  rgb(0, 94, 255);
+        
+
+    }
     h1{
-        width: 100vw;
+        font-size: 3rem;
+        font-weight: 500;
+        margin-bottom: 0px;
+    }
+
+    h2{
+        font-size: .9rem;
+        display: flex;
+        justify-content: center;
+        margin-top: .1rem;
     }
     
 }
+
+    .searchBarParent{
+        padding: 1rem;
+        width: 100%;
+
+        input{
+            padding: 1em;
+            border: none;
+            width: 100%;
+            border-radius: 5px;
+            font-style: inherit;
+            color: inherit;
+            background-color: violet;
+
+        }
+
+        button{
+            padding: 0;
+            border: none;
+            font-weight: 700;
+            background-color: transparent;
+            margin-left: -20px;
+        }
+    }
 
 
 .card{
@@ -19,7 +61,7 @@
     border: 1px solid #ccc;
    
     width: 15rem;
-    .heading{
+    .cardHeading{
         font-size: 1.8em;  padding: .5rem; 
     }
     .content  { 

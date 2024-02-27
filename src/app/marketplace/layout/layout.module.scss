@@ -1,0 +1,51 @@
+.header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    height: 2rem;;
+    
+    .logo{
+        color:  rgb(0, 94, 255);
+        font-size: 3rem;
+    }
+
+    .pageLinks{
+        display: flex;
+        gap: 2em;
+        font-weight:500;
+        border: 2px solid red;
+        div{
+            font-size: 1rem;
+        }
+       
+       }
+
+    .loginDemo{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 3em;
+       
+        h1{
+            font-size: 1rem;
+            font-weight:500;
+        }
+
+        .demo{
+            background-color: rgb(0, 94, 255);
+            border-radius: .4em;
+            color: white;
+            font-size: 1rem;
+            font-weight:500;
+            height: 1rem;
+            padding: .8rem 1.5rem 1.2rem 1.5rem ;
+            margin: 0px;
+
+
+        }
+
+
+    }
+
+}

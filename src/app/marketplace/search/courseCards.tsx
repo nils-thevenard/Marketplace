@@ -7,7 +7,7 @@ const CourseCards: React.FC<{ data: Course[] }> = ({ data }) => {
     <div className={styles.CourseCards}>
       {data.map((data) => (
         <div className={styles.card} key={data.id}>
-          <div className={styles.heading}>{data.name}</div>
+          <div className={styles.cardHeading}>{data.name}</div>
           <div className={styles.content}>
             <div>Description: {data.description}</div>
             <div>Price: {data.price}</div>

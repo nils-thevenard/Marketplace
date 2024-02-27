@@ -8,20 +8,24 @@ import styles from "./courseCard.module.scss";
 
 export default function FilteredCards() {
   // I could set use state as just a string but by importing Category and declaring it as the type i have the type safety of only being able to use the sect category's
-  const [letter, setLetter] = useState<Category | "">("");
+  const [category, setCategory] = useState<Category | "">("");
 
   // filtering the array depending on the value of letter
   const filteredData: Course[] = DATA.filter((course) => {
-    return course.category === letter;
+    return course.category === category;
   });
 
   //mapping out the array of objects and displaying as JSX
-  const SearchCards: React.FC<{ data: Course[] }> = ({ data }) => {
+  const SearchCards: React.FC = () => {
     const [searchText, setSearchText] = useState<string>("");
     return (
-      <div className={styles.CourseCards}>
-        {searchText == "" && <h1>marketplace</h1>}
-        <form>
+      <div className={styles.filters}>
+        <div className={styles.pageHeading}>
+          {searchText == "" && <h1>Course Marketplace</h1>}
+          {searchText == "" && <h2>Grow continuously, succeed infinitely</h2>}
+        </div>
+
+        <form className={styles.searchBarParent}>
           <input
             type="text"
             placeholder="Search..."
@@ -30,7 +34,7 @@ export default function FilteredCards() {
               setSearchText(e.target.value);
             }}
           />
-          <button onClick={() => setSearchText("")}>Clear</button>
+          <button onClick={() => setSearchText("")}>X</button>
         </form>
       </div>
     );
@@ -38,32 +42,32 @@ export default function FilteredCards() {
 
   return (
     <div>
-      <SearchCards data={[]} />
+      <SearchCards />
       <CourseCards data={filteredData} />
       <button
         onClick={() => {
-          setLetter("A");
+          setCategory("A");
         }}
       >
         Category A
       </button>
       <button
         onClick={() => {
-          setLetter("B");
+          setCategory("B");
         }}
       >
         Category B
       </button>
       <button
         onClick={() => {
-          setLetter("C");
+          setCategory("C");
         }}
       >
         Category C
       </button>
       <button
         onClick={() => {
-          setLetter("");
+          setCategory("");
         }}
       >
         Clear
