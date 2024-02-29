@@ -21,7 +21,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
       key={course.id}
     >
       <div className={styles.cardHeading}>
-        <div className={styles.title}>{course.name}</div>
+        <div className={styles.title}>{course.company}</div>
         <div className={styles.logo}> LOGO</div>
       </div>
       <div className={styles.content}>

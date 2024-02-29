@@ -2,6 +2,8 @@
 .courseCardsContainer{
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
    
   
 
@@ -10,7 +12,7 @@
 
 .card{
     font-weight: 300;
-    margin: 20px 15px;
+    margin-top: 3rem;
     border-radius: 3px;
     &:hover{ box-shadow: 0 0 5px #b7b7b7;}
     border: 2px solid #9bcffd;

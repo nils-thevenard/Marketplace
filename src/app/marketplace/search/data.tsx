@@ -4,7 +4,7 @@ export type Category = "A" | "B" | "C";
 
 export interface Course {
   id: number;
-  name: string;
+  company: string;
   description: string;
   price: number;
   category: Category;
@@ -13,26 +13,144 @@ export interface Course {
 const DATA: Course[] = [
   {
     id: 0,
-    name: "Nils",
+    company: "Dacreed",
     description: "blah blah",
     price: 100,
     category: "A",
   },
-  { id: 1, name: "Jim", description: "blah blah", price: 100, category: "C" },
-  { id: 2, name: "Tom", description: "blah blah", price: 100, category: "C" },
-  { id: 3, name: "Sam", description: "blah blah", price: 100, category: "B" },
-  { id: 4, name: "Bob", description: "blah blah", price: 100, category: "A" },
+  {
+    id: 1,
+    company: "Maccas",
+    description: "blah blah",
+    price: 100,
+    category: "C",
+  },
+  {
+    id: 2,
+    company: "Jims coding",
+    description: "blah blah",
+    price: 100,
+    category: "C",
+  },
+  {
+    id: 3,
+    company: "Maccas",
+    description: "blah blah",
+    price: 100,
+    category: "B",
+  },
+  {
+    id: 4,
+    company: "Dacreed",
+    description: "blah blah",
+    price: 100,
+    category: "A",
+  },
   {
     id: 5,
-    name: "Nils",
+    company: "Jims coding",
     description: "blah blah",
     price: 100,
     category: "A",
   },
-  { id: 6, name: "Jim", description: "blah blah", price: 100, category: "C" },
-  { id: 7, name: "Tom", description: "blah blah", price: 100, category: "C" },
-  { id: 8, name: "Sam", description: "blah blah", price: 100, category: "B" },
-  { id: 9, name: "Bob", description: "blah blah", price: 100, category: "A" },
+  {
+    id: 6,
+    company: "Dacreed",
+    description: "blah blah",
+    price: 100,
+    category: "C",
+  },
+  {
+    id: 7,
+    company: "Jims coding",
+    description: "blah blah",
+    price: 100,
+    category: "B",
+  },
+  {
+    id: 8,
+    company: "Dacreed",
+    description: "blah blah",
+    price: 100,
+    category: "B",
+  },
+  {
+    id: 9,
+    company: "Maccas",
+    description: "blah blah",
+    price: 100,
+    category: "A",
+  },
+  {
+    id: 10,
+    company: "Dacreed",
+    description: "blah blah",
+    price: 100,
+    category: "A",
+  },
+  {
+    id: 11,
+    company: "Maccas",
+    description: "blah blah",
+    price: 100,
+    category: "C",
+  },
+  {
+    id: 12,
+    company: "Jims coding",
+    description: "blah blah",
+    price: 100,
+    category: "C",
+  },
+  {
+    id: 13,
+    company: "Maccas",
+    description: "blah blah",
+    price: 100,
+    category: "B",
+  },
+  {
+    id: 14,
+    company: "Dacreed",
+    description: "blah blah",
+    price: 100,
+    category: "A",
+  },
+  {
+    id: 15,
+    company: "Jims coding",
+    description: "blah blah",
+    price: 100,
+    category: "A",
+  },
+  {
+    id: 16,
+    company: "Dacreed",
+    description: "blah blah",
+    price: 100,
+    category: "C",
+  },
+  {
+    id: 17,
+    company: "Jims coding",
+    description: "blah blah",
+    price: 100,
+    category: "B",
+  },
+  {
+    id: 18,
+    company: "Dacreed",
+    description: "blah blah",
+    price: 100,
+    category: "B",
+  },
+  {
+    id: 19,
+    company: "Maccas",
+    description: "blah blah",
+    price: 100,
+    category: "A",
+  },
 ];
 
 export default DATA;

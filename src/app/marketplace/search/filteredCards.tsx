@@ -10,25 +10,18 @@ const FilteredCards: React.FC = () => {
   // I could set use state as just a string but by importing Category and declaring it as the type i have the type safety of only being able to use the sect category's
   const [category, setCategory] = useState<Category | "">("");
   const [company, setCompany] = useState<string | "">("");
-  const [style, setStyle] = useState("light");
-
-  const changeStyle = () => {
-    if (style !== "light") {
-      setStyle("light");
-    } else {
-      setStyle("dark");
-    }
-    console.log("you just clicked");
-  };
 
   // filtering the array depending on the value of letter
   // need to improve filter logic to alow
   const filteredData: Course[] = DATA.filter((course) => {
-    if (category != "") {
+    if (category !== "" && company !== "") {
+      return course.category === category && course.company === company;
+    } else if (category !== "") {
       return course.category === category;
-    } else {
-      return course.name === company;
+    } else if (company !== "") {
+      return course.company === company;
     }
+    return true;
   });
 
   const handleCategory = (category: "A" | "B" | "C") => {
@@ -41,7 +34,7 @@ const FilteredCards: React.FC = () => {
     });
   };
 
-  const handleName = (company: "Nils") => {
+  const handleCompany = (company: "Jims coding" | "Dacreed" | "Maccas") => {
     setCompany((prevState) => {
       if (prevState === "") {
         return company;
@@ -81,21 +74,15 @@ const FilteredCards: React.FC = () => {
       <SearchCards />
       <div className={styles.CategoryButtonParent}>
         <div className={styles.All}>All</div>
-        {category !== "A" && (
-          <button
-            className={styles.buttonA}
-            onClick={(event) => {
-              handleCategory("A");
-              if (event.currentTarget.style.backgroundColor) {
-                event.currentTarget.style.backgroundColor = "black";
-              } else {
-                event.currentTarget.style.backgroundColor = "salmon";
-              }
-            }}
-          >
-            Category A
-          </button>
-        )}
+
+        <button
+          className={`${styles.buttonA} ${category === "A" && styles.active} `}
+          onClick={() => {
+            handleCategory("A");
+          }}
+        >
+          Category A
+        </button>
 
         <button
           className={`${styles.buttonB} ${category === "B" && styles.active}`}
@@ -107,7 +94,7 @@ const FilteredCards: React.FC = () => {
         </button>
 
         <button
-          className={styles.buttonC}
+          className={`${styles.buttonC} ${category === "C" && styles.active}`}
           onClick={() => {
             handleCategory("C");
           }}
@@ -116,33 +103,39 @@ const FilteredCards: React.FC = () => {
         </button>
         <button className={styles.arrow}> arw</button>
       </div>
-      {/*______________________________________________________ */}
+      {/*_________________________companies_____________________________ */}
 
       <div className={styles.CompanyButtonParent}>
         <div className={styles.AllProviders}>All Providers</div>
         <button
-          className={styles.buttonA}
+          className={`${styles.Dacreed} ${
+            company === "Dacreed" && styles.active
+          }`}
           onClick={() => {
-            handleName("Nils");
+            handleCompany("Dacreed");
           }}
         >
-          Nils
+          Dacreed
         </button>
         <button
-          className={styles.buttonB}
+          className={`${styles.Maccas} ${
+            company === "Maccas" && styles.active
+          }`}
           onClick={() => {
-            handleCategory("B");
+            handleCompany("Maccas");
           }}
         >
-          Category 2B
+          Maccas
         </button>
         <button
-          className={styles.buttonC}
+          className={`${styles.jimsCoding} ${
+            company === "Jims coding" && styles.active
+          }`}
           onClick={() => {
-            handleCategory("C");
+            handleCompany("Jims coding");
           }}
         >
-          Category 2C
+          Jims coding
         </button>
         <button className={styles.arrow}> arw </button>
         {/* <button

@@ -110,7 +110,7 @@ width: 75vw;
 
    
 
-    .buttonA{
+    .Dacreed{
         background-color: rgb(255, 158, 240);
         border-radius: .4em;
         color: white;
@@ -123,7 +123,7 @@ width: 75vw;
         
     }
 
-    .buttonB{
+    .Maccas{
         background-color: rgb(156, 237, 178);
         border-radius: .4em;
         color: white;
@@ -134,7 +134,7 @@ width: 75vw;
         
     }
 
-    .buttonC{
+    .jimsCoding{
         background-color: rgb(255, 228, 158);
         border-radius: .4em;
         color: white;
@@ -153,6 +153,10 @@ width: 75vw;
         position: absolute;
         right: 0;
 
+    }
+
+    .active{
+        background-color: red;
     }
 
 
