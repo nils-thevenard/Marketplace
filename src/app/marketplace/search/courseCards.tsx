@@ -10,7 +10,6 @@ import { Course } from "./data";
 //_______________________________
 
 //mapping out the array of objects and displaying as JSX
-
 const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
@@ -91,7 +90,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
               </div>
               <div className={styles.buttonBox}>
                 <button className={styles.enrollButton}>Enroll Now</button>
-              </div>{" "}
+              </div>
             </div>
           </div>
         </div>

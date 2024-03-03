@@ -191,13 +191,9 @@ const FilteredCards: React.FC = () => {
           Jims coding
         </button>
         <button className={styles.arrow}> arw </button>
-        {/* <button
-          onClick={() => {
-            setCategory("");
-          }}
-        >
-          Clear
-        </button> */}
+      </div>
+      <div className={styles.returnedCourseCount}>
+        {filteredData.length} courses returned from your above criteria:
       </div>
 
       <CourseCards data={filteredData} />
