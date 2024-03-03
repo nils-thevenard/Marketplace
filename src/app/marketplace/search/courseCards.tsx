@@ -14,27 +14,88 @@ import { Course } from "./data";
 const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
+  console.log("the value of isExpanded:", isExpanded);
+
   return (
-    <div
-      onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
-      className={styles.card}
-      key={course.id}
-    >
-      <div className={styles.cardHeading}>
-        <div className={styles.title}>{course.company}</div>
-        <div className={styles.logo}> LOGO</div>
-      </div>
-      <div className={styles.content}>
-        <div>Description: {course.description}</div>
-        <div>Price: {course.price}</div>
-        <div>Category: {course.category}</div>
-      </div>
+    <div>
+      {isExpanded === false && (
+        <div
+          onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+          className={styles.card}
+          key={course.id}
+        >
+          <div className={styles.cardHeading}>
+            <div className={styles.title}>{course.company}</div>
+            <div className={styles.logo}> LOGO</div>
+          </div>
+          <div className={styles.content}>
+            <div className={styles.category}>Category {course.category}</div>
 
-      <div className={styles.buttonParent}>
-        <div>Enroll Now</div>
+            <div className={styles.unitStandard}>
+              <div>NZQA 11551</div>
+              <div>Level 5 (10 credits)</div>
+            </div>
+            <div className={styles.descriptionAndTimeFrame}>
+              <div>Time: Within X weeks of enrollment</div>
+              <div>
+                Description: this is lots of extra text being used as a place
+                holder {course.description}
+              </div>
+            </div>
+          </div>
+          <div className={styles.costAndEnroll}>
+            <div className={styles.cost}>
+              <h1>${course.price}</h1>
+              <h2>(plus GST)</h2>
+            </div>
 
-        {isExpanded && <div>hello</div>}
-      </div>
+            <button className={styles.enrollButton}>Enroll Now</button>
+          </div>
+        </div>
+      )}
+      {/* ___________________________expanded card________________________________________ */}
+      {isExpanded && (
+        <div
+          onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+          className={styles.expandedCard}
+          key={course.id}
+        >
+          <div className={styles.category}>
+            Category {course.category} {course.company}
+          </div>
+
+          <div className={styles.content}>
+            {/* _______ */}
+
+            <div className={styles.leftContent}>
+              <div className={styles.description}>
+                Description: this is lots of extra text being used as a place
+                holder {course.description}
+              </div>
+              <div className={styles.costAndEnroll}>
+                <div className={styles.cost}>
+                  <h1>${course.price}</h1>
+                  <h2>(plus GST)</h2>
+                </div>
+              </div>
+            </div>
+            {/* ___________ */}
+            <div className={styles.rightContent}>
+              <div className={styles.logo}> LOGO</div>
+              <div className={styles.unitStandard}>
+                <div>NZQA expanded</div>
+                <div>Level 5 (10 credits)</div>
+              </div>
+              <div className={styles.descriptionAndTimeFrame}>
+                <div>Time: Within X weeks of enrollment</div>
+              </div>
+              <div className={styles.buttonBox}>
+                <button className={styles.enrollButton}>Enroll Now</button>
+              </div>{" "}
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 };
