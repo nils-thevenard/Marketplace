@@ -140,7 +140,7 @@
     align-items: center;
     justify-content: end;
 
-    input {
+    .animatedSearchBar {
       padding: 1em;
       border: none;
       width: 100%;
@@ -148,8 +148,20 @@
       font-style: inherit;
       color: inherit;
       background-color: rgb(157, 215, 252);
+
       &:focus {
         outline: none;
+      }
+    }
+    .animatedSearchBar::placeholder {
+      animation: typing 3s steps(3, end) infinite;
+      @keyframes typing {
+        from {
+          width: 0;
+        }
+        to {
+          width: 100%;
+        }
       }
     }
 

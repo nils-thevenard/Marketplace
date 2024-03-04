@@ -13,21 +13,42 @@ const FilteredCards: React.FC = () => {
   // I could set use state as just a string but by importing Category and declaring it as the type i have the type safety of only being able to use the sect category's
   const [category, setCategory] = useState<Category | "">("");
   const [company, setCompany] = useState<string | "">("");
-  // const selected = "/../../../../public/selected.svg";
-  // const notSelected = "/../../../../public/notSelected.svg";
+  const [searchText, setSearchText] = useState<string | "">("");
+  // filter for category
+  function filterCategory(courses: Course[], category: Category): Course[] {
+    const result = courses.filter((c) => c.category === category);
+    console.log("CATEGORY FILTER RESULT", result);
+    return result;
+  }
+  // filter for company
+  function filterCompany(courses: Course[], company: string): Course[] {
+    const result = courses.filter((c) => c.company === company);
+    console.log("COMPANY FILTER RESULT", result);
+    return result;
+  }
 
-  // filtering the array depending on the value of letter
-  // need to improve filter logic to alow
-  const filteredData: Course[] = DATA.filter((course) => {
-    if (category !== "" && company !== "") {
-      return course.category === category && course.company === company;
-    } else if (category !== "") {
-      return course.category === category;
-    } else if (company !== "") {
-      return course.company === company;
-    }
-    return true;
-  });
+  function filterSearch(courses: Course[], searchText: string): Course[] {
+    const result = courses.filter((c) =>
+      c.description.toLowerCase().includes(searchText.toLowerCase())
+    );
+    console.log("SEARCH FILTER RESULT", result);
+    return result;
+  }
+
+  // stacking the filters
+  // @ts-ignore
+  const filteredCategory = filterCategory(DATA, category);
+  const filteredCompany = filterCompany(DATA, company);
+  const filteredSearch = filterSearch(DATA, searchText);
+  const filteredData = [...filteredSearch];
+
+  // const uniqueFilteredData = filteredData.filter(
+  //   (value, index, self) =>
+  //     index ===
+  //     self.findIndex(
+  //       (t) => t.category === value.category && t.company === value.company
+  //     )
+  // );
 
   const handleCategory = (category: "A" | "B" | "C") => {
     setCategory((prevState) => {
@@ -51,32 +72,31 @@ const FilteredCards: React.FC = () => {
 
   //mapping out the array of objects and displaying as JSX
   const SearchCards: React.FC = () => {
-    const [searchText, setSearchText] = useState<string>("");
     return (
-      <div className={styles.searchFilters}>
-        <div className={styles.pageHeading}>
-          {searchText == "" && <h1>Course Marketplace</h1>}
-          {searchText == "" && <h2>Grow continuously, succeed infinitely</h2>}
-        </div>
-
-        <form className={styles.searchBarParent}>
-          <input
-            type="text"
-            placeholder="Search..."
-            value={searchText}
-            onChange={(e) => {
-              setSearchText(e.target.value);
-            }}
-          />
-          <button onClick={() => setSearchText("")}>Search</button>
-        </form>
-      </div>
+      <form className={styles.searchBarParent}>
+        <input
+          className={styles.animatedSearchBar}
+          type="text"
+          placeholder="placeholder"
+          value={searchText}
+          onChange={(e) => {
+            setSearchText(e.target.value);
+          }}
+        />
+        <button onClick={() => setSearchText("")}>Search</button>
+      </form>
     );
   };
 
   return (
     <div className={styles.filters}>
-      <SearchCards />
+      <div className={styles.searchFilters}>
+        <div className={styles.pageHeading}>
+          {searchText == "" && <h1>Course Marketplace</h1>}
+          {searchText == "" && <h2>Grow continuously, succeed infinitely</h2>}
+        </div>
+        <SearchCards />
+      </div>
       <div className={styles.CategoryButtonParent}>
         <div className={styles.All}>All</div>
 
