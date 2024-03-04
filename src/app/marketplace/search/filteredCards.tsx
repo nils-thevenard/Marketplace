@@ -10,24 +10,40 @@ import selected from "../../../../public/selected.svg";
 import Image from "next/image";
 
 const FilteredCards: React.FC = () => {
-  // I could set use state as just a string but by importing Category and declaring it as the type i have the type safety of only being able to use the sect category's
-  const [category, setCategory] = useState<Category | "">("");
-  const [company, setCompany] = useState<string | "">("");
+  // I could set use state as just a string but by importing Category and declaring it as the type I have the type safety of only being able to use the sect category's
+  const [searchCategory, setCategory] = useState<Category>("");
+  const [searchCompany, setCompany] = useState<string | "">("");
   const [searchText, setSearchText] = useState<string | "">("");
+
   // filter for category
-  function filterCategory(courses: Course[], category: Category): Course[] {
-    const result = courses.filter((c) => c.category === category);
-    console.log("CATEGORY FILTER RESULT", result);
-    return result;
+  function filterCategory(
+    courses: Course[],
+    searchCategory: Category
+  ): Course[] {
+    if (searchCategory === "") {
+      console.log("THE RESULT OF FILTER CATEGORY NOT SELECTED", courses);
+      return courses;
+    } else {
+      const result = courses.filter((c) => c.category === searchCategory);
+      console.log("CATEGORY FILTER RESULT", result);
+      return result;
+    }
   }
   // filter for company
-  function filterCompany(courses: Course[], company: string): Course[] {
-    const result = courses.filter((c) => c.company === company);
-    console.log("COMPANY FILTER RESULT", result);
-    return result;
+  function filterCompany(courses: Course[], searchCompany: string): Course[] {
+    if (searchCompany === "") {
+      return filterCategory(filteredArray, searchCategory);
+    } else {
+      const result = courses.filter((c) => searchCompany.includes(c.company));
+      console.log("COMPANY FILTER RESULT", result);
+      return result;
+    }
   }
-
+  // filter for search
   function filterSearch(courses: Course[], searchText: string): Course[] {
+    if (searchText === "") {
+      return filterCompany(filteredArray, searchCompany);
+    }
     const result = courses.filter((c) =>
       c.description.toLowerCase().includes(searchText.toLowerCase())
     );
@@ -35,57 +51,32 @@ const FilteredCards: React.FC = () => {
     return result;
   }
 
-  // stacking the filters
-  // @ts-ignore
-  const filteredCategory = filterCategory(DATA, category);
-  const filteredCompany = filterCompany(DATA, company);
-  const filteredSearch = filterSearch(DATA, searchText);
-  const filteredData = [...filteredSearch];
+  // stacking the filters, using let to be able to update the variable as we travel down
+  let filteredArray = DATA;
+  filteredArray = filterCategory(filteredArray, searchCategory);
+  filteredArray = filterCompany(filteredArray, searchCompany);
+  filteredArray = filterSearch(filteredArray, searchText);
 
-  // const uniqueFilteredData = filteredData.filter(
-  //   (value, index, self) =>
-  //     index ===
-  //     self.findIndex(
-  //       (t) => t.category === value.category && t.company === value.company
-  //     )
-  // );
-
-  const handleCategory = (category: "A" | "B" | "C") => {
+  const handleCategory = (searchCategory: "A" | "B" | "C") => {
     setCategory((prevState) => {
-      if (prevState === category) {
+      if (prevState === searchCategory) {
         return "";
       } else {
-        return category;
+        return searchCategory;
       }
     });
   };
 
-  const handleCompany = (company: "Jims coding" | "Dacreed" | "Maccas") => {
+  const handleCompany = (
+    searchCompany: "Jims coding" | "Dacreed" | "Maccas"
+  ) => {
     setCompany((prevState) => {
-      if (prevState === company) {
+      if (prevState === searchCompany) {
         return "";
       } else {
-        return company;
+        return searchCompany;
       }
     });
-  };
-
-  //mapping out the array of objects and displaying as JSX
-  const SearchCards: React.FC = () => {
-    return (
-      <form className={styles.searchBarParent}>
-        <input
-          className={styles.animatedSearchBar}
-          type="text"
-          placeholder="placeholder"
-          value={searchText}
-          onChange={(e) => {
-            setSearchText(e.target.value);
-          }}
-        />
-        <button onClick={() => setSearchText("")}>Search</button>
-      </form>
-    );
   };
 
   return (
@@ -95,22 +86,35 @@ const FilteredCards: React.FC = () => {
           {searchText == "" && <h1>Course Marketplace</h1>}
           {searchText == "" && <h2>Grow continuously, succeed infinitely</h2>}
         </div>
-        <SearchCards />
+        <form className={styles.searchBarParent}>
+          <input
+            className={styles.animatedSearchBar}
+            type="text"
+            placeholder="placeholder"
+            value={searchText}
+            onChange={(e) => {
+              setSearchText(e.target.value);
+            }}
+          />
+          <button onClick={() => setSearchText("")}>Search</button>
+        </form>
       </div>
       <div className={styles.CategoryButtonParent}>
         <div className={styles.All}>All</div>
 
         <button
-          className={`${styles.button} ${category === "A" && styles.active} `}
+          className={`${styles.button} ${
+            searchCategory === "A" && styles.active
+          } `}
           onClick={() => {
             handleCategory("A");
           }}
         >
           <div className={styles.checkbox}>
-            {category === "A" && (
+            {searchCategory === "A" && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {category !== "A" && (
+            {searchCategory !== "A" && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -118,16 +122,18 @@ const FilteredCards: React.FC = () => {
         </button>
 
         <button
-          className={`${styles.button} ${category === "B" && styles.active}`}
+          className={`${styles.button} ${
+            searchCategory === "B" && styles.active
+          }`}
           onClick={() => {
             handleCategory("B");
           }}
         >
           <div className={styles.checkbox}>
-            {category === "B" && (
+            {searchCategory === "B" && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {category !== "B" && (
+            {searchCategory !== "B" && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -135,16 +141,18 @@ const FilteredCards: React.FC = () => {
         </button>
 
         <button
-          className={`${styles.button} ${category === "C" && styles.active}`}
+          className={`${styles.button} ${
+            searchCategory === "C" && styles.active
+          }`}
           onClick={() => {
             handleCategory("C");
           }}
         >
           <div className={styles.checkbox}>
-            {category === "C" && (
+            {searchCategory === "C" && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {category !== "C" && (
+            {searchCategory !== "C" && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -158,17 +166,17 @@ const FilteredCards: React.FC = () => {
         <div className={styles.AllProviders}>All Providers</div>
         <button
           className={`${styles.button} ${
-            company === "Dacreed" && styles.active
+            searchCompany === "Dacreed" && styles.active
           }`}
           onClick={() => {
             handleCompany("Dacreed");
           }}
         >
           <div className={styles.checkbox}>
-            {company === "Dacreed" && (
+            {searchCompany === "Dacreed" && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {company !== "Dacreed" && (
+            {searchCompany !== "Dacreed" && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -176,17 +184,17 @@ const FilteredCards: React.FC = () => {
         </button>
         <button
           className={`${styles.button} ${
-            company === "Maccas" && styles.active
+            searchCompany === "Maccas" && styles.active
           }`}
           onClick={() => {
             handleCompany("Maccas");
           }}
         >
           <div className={styles.checkbox}>
-            {company === "Maccas" && (
+            {searchCompany === "Maccas" && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {company !== "Maccas" && (
+            {searchCompany !== "Maccas" && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -194,17 +202,17 @@ const FilteredCards: React.FC = () => {
         </button>
         <button
           className={`${styles.button} ${
-            company === "Jims coding" && styles.active
+            searchCompany === "Jims coding" && styles.active
           }`}
           onClick={() => {
             handleCompany("Jims coding");
           }}
         >
           <div className={styles.checkbox}>
-            {company === "Jims coding" && (
+            {searchCompany === "Jims coding" && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {company !== "Jims coding" && (
+            {searchCompany !== "Jims coding" && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -213,10 +221,10 @@ const FilteredCards: React.FC = () => {
         <button className={styles.arrow}> arw </button>
       </div>
       <div className={styles.returnedCourseCount}>
-        {filteredData.length} courses returned from your above criteria:
+        {filteredArray.length} courses returned from your above criteria:
       </div>
 
-      <CourseCards data={filteredData} />
+      <CourseCards data={filteredArray} />
     </div>
   );
 };

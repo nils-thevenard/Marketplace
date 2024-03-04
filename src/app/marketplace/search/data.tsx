@@ -1,6 +1,4 @@
-import React from "react";
-
-export type Category = "A" | "B" | "C";
+export type Category = "A" | "B" | "C" | "";
 
 export interface Course {
   id: number;
