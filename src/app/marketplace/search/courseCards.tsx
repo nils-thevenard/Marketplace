@@ -13,7 +13,7 @@ import { Course } from "./data";
 const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
   const [isExpanded, setIsExpanded] = useState<boolean>(false);
 
-  console.log("the value of isExpanded:", isExpanded);
+  // console.log("the value of isExpanded:", isExpanded);
 
   return (
     <div>

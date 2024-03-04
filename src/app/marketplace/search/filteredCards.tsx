@@ -11,14 +11,16 @@ import Image from "next/image";
 
 const FilteredCards: React.FC = () => {
   // I could set use state as just a string but by importing Category and declaring it as the type I have the type safety of only being able to use the sect category's
-  const [searchCategory, setCategory] = useState<Category>("");
-  const [searchCompany, setCompany] = useState<string | "">("");
+  const [searchCategory, setSearchCategory] = useState<Category[]>([]);
+  const [searchCompany, setSearchCompany] = useState<string | "">("");
   const [searchText, setSearchText] = useState<string | "">("");
+
+  const testArray = [1, 2, 3];
 
   // filter for category
   function filterCategory(
     courses: Course[],
-    searchCategory: Category
+    searchCategory: Category[]
   ): Course[] {
     if (searchCategory === "") {
       console.log("THE RESULT OF FILTER CATEGORY NOT SELECTED", courses);
@@ -57,20 +59,24 @@ const FilteredCards: React.FC = () => {
   filteredArray = filterCompany(filteredArray, searchCompany);
   filteredArray = filterSearch(filteredArray, searchText);
 
-  const handleCategory = (searchCategory: "A" | "B" | "C") => {
-    setCategory((prevState) => {
-      if (prevState === searchCategory) {
-        return "";
-      } else {
-        return searchCategory;
-      }
-    });
+  const handleCategory = (string: "A" | "B" | "C" | "") => {
+    if (searchCategory.includes(string)) {
+      setSearchCategory(searchCategory.filter((letter) => letter !== string));
+    } else {
+      setSearchCategory([...searchCategory, string]);
+    }
+    return console.log("THIS IS THE LOG FOR HANDLE CATEGORY", searchCategory);
   };
+
+  // onClick={() => {
+  //   setSearchCategory([...searchCategory, "A"]);
+  //   console.log(searchCategory);
+  // }}
 
   const handleCompany = (
     searchCompany: "Jims coding" | "Dacreed" | "Maccas"
   ) => {
-    setCompany((prevState) => {
+    setSearchCompany((prevState) => {
       if (prevState === searchCompany) {
         return "";
       } else {
@@ -104,17 +110,17 @@ const FilteredCards: React.FC = () => {
 
         <button
           className={`${styles.button} ${
-            searchCategory === "A" && styles.active
+            searchCategory.includes("A") && styles.active
           } `}
           onClick={() => {
             handleCategory("A");
           }}
         >
           <div className={styles.checkbox}>
-            {searchCategory === "A" && (
+            {searchCategory.includes("A") && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {searchCategory !== "A" && (
+            {searchCategory.includes("A") === false && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -123,17 +129,17 @@ const FilteredCards: React.FC = () => {
 
         <button
           className={`${styles.button} ${
-            searchCategory === "B" && styles.active
+            searchCategory.includes("B") && styles.active
           }`}
           onClick={() => {
             handleCategory("B");
           }}
         >
           <div className={styles.checkbox}>
-            {searchCategory === "B" && (
+            {searchCategory.includes("B") && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {searchCategory !== "B" && (
+            {searchCategory.includes("B") === false && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -142,17 +148,15 @@ const FilteredCards: React.FC = () => {
 
         <button
           className={`${styles.button} ${
-            searchCategory === "C" && styles.active
+            searchCategory.includes("C") && styles.active
           }`}
-          onClick={() => {
-            handleCategory("C");
-          }}
+          onClick={() => handleCategory("C")}
         >
           <div className={styles.checkbox}>
-            {searchCategory === "C" && (
+            {searchCategory.includes("C") && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {searchCategory !== "C" && (
+            {searchCategory.includes("C") === false && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
