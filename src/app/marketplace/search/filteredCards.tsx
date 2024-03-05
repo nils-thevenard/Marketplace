@@ -12,32 +12,31 @@ import Image from "next/image";
 const FilteredCards: React.FC = () => {
   // I could set use state as just a string but by importing Category and declaring it as the type I have the type safety of only being able to use the sect category's
   const [searchCategory, setSearchCategory] = useState<Category[]>([]);
-  const [searchCompany, setSearchCompany] = useState<string | "">("");
+  const [searchCompany, setSearchCompany] = useState<string[]>([]);
   const [searchText, setSearchText] = useState<string | "">("");
 
-  const testArray = [1, 2, 3];
-
-  // filter for category
+  // filter for category if search category is empty (the filter has not been selected return all the courses )
   function filterCategory(
     courses: Course[],
     searchCategory: Category[]
   ): Course[] {
-    if (searchCategory === "") {
-      console.log("THE RESULT OF FILTER CATEGORY NOT SELECTED", courses);
+    if (searchCategory.length === 0) {
+      // console.log("THE RESULT OF FILTER CATEGORY NOT SELECTED", courses);
       return courses;
     } else {
-      const result = courses.filter((c) => c.category === searchCategory);
-      console.log("CATEGORY FILTER RESULT", result);
+      const result = courses.filter((c) => searchCategory.includes(c.category));
+      // console.log("CATEGORY FILTER RESULT", result);
       return result;
     }
   }
   // filter for company
-  function filterCompany(courses: Course[], searchCompany: string): Course[] {
-    if (searchCompany === "") {
+  function filterCompany(courses: Course[], searchCompany: string[]): Course[] {
+    if (searchCompany.length === 0) {
+      // console.log("THE RESULT OF FILTER COMPANY NOT SELECTED", courses);
       return filterCategory(filteredArray, searchCategory);
     } else {
       const result = courses.filter((c) => searchCompany.includes(c.company));
-      console.log("COMPANY FILTER RESULT", result);
+      // console.log("COMPANY FILTER RESULT", result);
       return result;
     }
   }
@@ -49,7 +48,7 @@ const FilteredCards: React.FC = () => {
     const result = courses.filter((c) =>
       c.description.toLowerCase().includes(searchText.toLowerCase())
     );
-    console.log("SEARCH FILTER RESULT", result);
+    // console.log("SEARCH FILTER RESULT", result);
     return result;
   }
 
@@ -59,30 +58,22 @@ const FilteredCards: React.FC = () => {
   filteredArray = filterCompany(filteredArray, searchCompany);
   filteredArray = filterSearch(filteredArray, searchText);
 
-  const handleCategory = (string: "A" | "B" | "C" | "") => {
+  const handleCategory = (string: "A" | "B" | "C") => {
     if (searchCategory.includes(string)) {
       setSearchCategory(searchCategory.filter((letter) => letter !== string));
     } else {
       setSearchCategory([...searchCategory, string]);
     }
-    return console.log("THIS IS THE LOG FOR HANDLE CATEGORY", searchCategory);
+    // return console.log("THIS IS THE LOG FOR HANDLE CATEGORY", searchCategory);
   };
 
-  // onClick={() => {
-  //   setSearchCategory([...searchCategory, "A"]);
-  //   console.log(searchCategory);
-  // }}
-
-  const handleCompany = (
-    searchCompany: "Jims coding" | "Dacreed" | "Maccas"
-  ) => {
-    setSearchCompany((prevState) => {
-      if (prevState === searchCompany) {
-        return "";
-      } else {
-        return searchCompany;
-      }
-    });
+  const handleCompany = (string: "Jims coding" | "Dacreed" | "Maccas") => {
+    if (searchCompany.includes(string)) {
+      setSearchCompany(searchCompany.filter((letter) => letter !== string));
+    } else {
+      setSearchCompany([...searchCompany, string]);
+      // return console.log("THIS IS THE LOG FOR HANDLE COMPANY"), searchCompany;
+    }
   };
 
   return (
@@ -170,17 +161,17 @@ const FilteredCards: React.FC = () => {
         <div className={styles.AllProviders}>All Providers</div>
         <button
           className={`${styles.button} ${
-            searchCompany === "Dacreed" && styles.active
+            searchCompany.includes("Dacreed") && styles.active
           }`}
           onClick={() => {
             handleCompany("Dacreed");
           }}
         >
           <div className={styles.checkbox}>
-            {searchCompany === "Dacreed" && (
+            {searchCompany.includes("Dacreed") && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {searchCompany !== "Dacreed" && (
+            {searchCompany.includes("Dacreed") === false && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -188,17 +179,17 @@ const FilteredCards: React.FC = () => {
         </button>
         <button
           className={`${styles.button} ${
-            searchCompany === "Maccas" && styles.active
+            searchCompany.includes("Maccas") && styles.active
           }`}
           onClick={() => {
             handleCompany("Maccas");
           }}
         >
           <div className={styles.checkbox}>
-            {searchCompany === "Maccas" && (
+            {searchCompany.includes("Maccas") && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {searchCompany !== "Maccas" && (
+            {searchCompany.includes("Maccas") === false && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
@@ -206,17 +197,17 @@ const FilteredCards: React.FC = () => {
         </button>
         <button
           className={`${styles.button} ${
-            searchCompany === "Jims coding" && styles.active
+            searchCompany.includes("Jims coding") && styles.active
           }`}
           onClick={() => {
             handleCompany("Jims coding");
           }}
         >
           <div className={styles.checkbox}>
-            {searchCompany === "Jims coding" && (
+            {searchCompany.includes("Jims coding") && (
               <Image src={selected} alt="checkbox" width={10} height={10} />
             )}
-            {searchCompany !== "Jims coding" && (
+            {searchCompany.includes("Jims coding") === false && (
               <Image src={notSelected} alt="checkbox" width={10} height={10} />
             )}
           </div>
