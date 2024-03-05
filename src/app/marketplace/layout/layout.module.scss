@@ -1,50 +1,43 @@
-.header{
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 0rem 1rem 1rem 1rem;
+
+  .logo {
+    color: rgb(0, 94, 255);
+    font-size: 3rem;
+    font-weight: 700;
+  }
+
+  .pageLinks {
     display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    padding: 0rem 1rem 1rem 1rem;
-    
-    
-    .logo{
-        color:  rgb(0, 94, 255);
-        font-size: 3rem;
+    gap: 2em;
+    font-weight: 500;
+    div {
+      font-size: 1rem;
+    }
+  }
+
+  .loginDemo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 3em;
+
+    h1 {
+      font-size: 1rem;
+      font-weight: 500;
     }
 
-    .pageLinks{
-        display: flex;
-        gap: 2em;
-        font-weight:500;
-        div{
-            font-size: 1rem;
-        }
-       
-       }
-
-    .loginDemo{
-        display: flex;
-        flex-direction: row;
-        align-items: center;
-        gap: 3em;
-       
-        h1{
-            font-size: 1rem;
-            font-weight:500;
-        }
-
-        .demo{
-            background-color: rgb(0, 94, 255);
-            border-radius: .4em;
-            color: white;
-            font-size: 1rem;
-            font-weight:500;
-            height: 1rem;
-            padding: .8rem 1.5rem 2rem 1.5rem ;
-           
-
-
-        }
-
-
+    .demo {
+      background-color: rgb(0, 94, 255);
+      border-radius: 0.4em;
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      height: 1rem;
+      padding: 0.8rem 1.5rem 2rem 1.5rem;
     }
-
+  }
 }

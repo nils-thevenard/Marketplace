@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./courseCard.module.scss";
+// import styles from "./courseCardFlexBox.module.scss";
 import { Course } from "./data";
 // update logo to import corresponding logo
 //_______________________________
@@ -36,10 +37,7 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
             </div>
             <div className={styles.descriptionAndTimeFrame}>
               <div>Time: Within X weeks of enrollment</div>
-              <div>
-                Description: this is lots of extra text being used as a place
-                holder {course.description}
-              </div>
+              <div>Description: {course.description}</div>
             </div>
           </div>
           <div className={styles.costAndEnroll}>
@@ -63,34 +61,33 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
             Category {course.category} {course.company}
           </div>
 
-          <div className={styles.content}>
-            {/* _______ */}
+          {/* _______ */}
 
-            <div className={styles.leftContent}>
-              <div className={styles.description}>
-                Description: this is lots of extra text being used as a place
-                holder {course.description}
-              </div>
-              <div className={styles.costAndEnroll}>
-                <div className={styles.cost}>
-                  <h1>${course.price}</h1>
-                  <h2>(plus GST)</h2>
-                </div>
+          <div className={styles.leftContent}>
+            <div className={styles.description}>
+              Description: {course.description}
+            </div>
+            <div className={styles.costAndEnroll}>
+              <div className={styles.cost}>
+                <h1>${course.price}</h1>
+                <h2>(plus GST)</h2>
               </div>
             </div>
-            {/* ___________ */}
-            <div className={styles.rightContent}>
-              <div className={styles.logo}> LOGO</div>
-              <div className={styles.unitStandard}>
-                <div>NZQA expanded</div>
-                <div>Level 5 (10 credits)</div>
-              </div>
-              <div className={styles.descriptionAndTimeFrame}>
-                <div>Time: Within X weeks of enrollment</div>
-              </div>
-              <div className={styles.buttonBox}>
-                <button className={styles.enrollButton}>Enroll Now</button>
-              </div>
+          </div>
+          {/* ___________ */}
+          <div className={styles.rightContent}>
+            <div className={styles.logo}> LOGO</div>
+            <div className={styles.unitStandard}>
+              <div>NZQA expanded</div>
+              <div>Level 5 (10 credits)</div>
+            </div>
+
+            <div className={styles.descriptionAndTimeFrame}>
+              Time: Within X weeks of enrollment
+            </div>
+
+            <div className={styles.buttonBox}>
+              <button className={styles.enrollButton}>Enroll Now</button>
             </div>
           </div>
         </div>

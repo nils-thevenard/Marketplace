@@ -4,20 +4,84 @@
   align-items: center;
   width: 75vw;
 
+  .searchFilters {
+    display: flex;
+    flex-direction: column;
+    width: 75vw;
+    align-items: center;
+
+    .pageHeading {
+      color: rgb(0, 94, 255);
+    }
+
+    h1 {
+      font-size: 3rem;
+      font-weight: 500;
+      margin-bottom: 0px;
+      margin-top: 4rem;
+    }
+
+    h2 {
+      font-size: 0.9rem;
+      display: flex;
+      justify-content: center;
+      margin-top: 0.1rem;
+      margin-bottom: 3rem;
+    }
+
+    .searchBarParent {
+      width: 100%;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: end;
+
+      .animatedSearchBar {
+        padding: 1rem;
+        border: none;
+        width: 100%;
+        border-radius: 0.7rem;
+        font-style: inherit;
+        color: inherit;
+        background-color: rgb(157, 215, 252);
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      button {
+        border: none;
+        border-radius: 0.4em;
+        background-color: transparent;
+        // margin-top: 10px;
+        margin-right: 0.5rem;
+        padding: 0.4rem 0.75rem 0.4rem 0.75rem;
+        background-color: rgb(0, 94, 255);
+        // height: 1rem;
+        font-weight: 600;
+        position: absolute;
+        color: white;
+      }
+    }
+  }
+
   .CategoryButtonParent {
     display: flex;
-    width: 75vw;
+    width: 100%;
     justify-content: flex-start;
     gap: 2rem;
+    align-items: center;
     margin-top: 2rem;
     position: relative;
 
     .All {
       //this element did not work when just selecting as h1?
       border-radius: 0.4em;
-      border: 0.15rem blue solid;
+      border: 0.15rem #1e53d9 solid;
+      color: #1e53d9;
       font-weight: 500;
-      padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+      padding: 0.7rem 1rem 0.7rem 1rem;
     }
 
     .button {
@@ -25,9 +89,10 @@
       border: 1px solid #1e53d9;
       border-radius: 0.5rem;
       font-weight: 600;
-      padding: 0.5rem;
+
       display: flex;
       align-items: center;
+      padding: 0.7rem 1rem 0.7rem 1rem;
       //   justify-content: space-between;
 
       .checkbox {
@@ -37,9 +102,9 @@
 
     .arrow {
       border-radius: 0.4em;
-      border: 0.15rem blue solid;
+      border: 0.15rem #1e53d9 solid;
       font-weight: 500;
-      padding: 0.7rem 1.2rem 0.7rem 1.2rem;
+      padding: 0.3rem 0.5rem 0.2rem 0.5rem;
       background-color: transparent;
       position: absolute;
       right: 0;
@@ -62,9 +127,10 @@
     .AllProviders {
       //this element did not work when just selecting as h1?
       border-radius: 0.4em;
-      border: 0.15rem blue solid;
+      border: 0.15rem #1e53d9 solid;
+      color: #1e53d9;
       font-weight: 500;
-      padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+      padding: 0.7rem 1rem 0.7rem 1rem;
     }
 
     .button {
@@ -75,6 +141,7 @@
       padding: 0.5rem;
       display: flex;
       align-items: center;
+      padding: 0.7rem 1rem 0.7rem 1rem;
       //   justify-content: space-between;
 
       .checkbox {
@@ -84,9 +151,9 @@
 
     .arrow {
       border-radius: 0.4em;
-      border: 0.15rem blue solid;
+      border: 0.15rem #1e53d9 solid;
       font-weight: 500;
-      padding: 0.5rem 1.2rem 0.5rem 1.2rem;
+      padding: 0.3rem 0.5rem 0.2rem 0.5rem;
       background-color: transparent;
       position: absolute;
       right: 0;
@@ -97,86 +164,27 @@
       border: 2px solid #03c38d;
     }
   }
+  .resetAllContainer {
+    width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 0.2rem;
+    .resetAll {
+      height: 1.75rem;
+      color: #1e53d9;
+      font-weight: 600;
+    }
+  }
+
   .returnedCourseCount {
     color: #03c38d;
-    margin-top: 1rem;
+
     font-size: 1.25rem;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
-  }
-}
+    border: none;
 
-.searchFilters {
-  display: flex;
-  flex-direction: column;
-  width: 75vw;
-  align-items: center;
-  margin-top: 4rem;
-
-  .pageHeading {
-    color: rgb(0, 94, 255);
-  }
-
-  h1 {
-    font-size: 3rem;
-    font-weight: 500;
-    margin-bottom: 0px;
-  }
-
-  h2 {
-    font-size: 0.9rem;
-    display: flex;
-    justify-content: center;
-    margin-top: 0.1rem;
-  }
-
-  .searchBarParent {
-    margin-top: 3rem;
-
-    width: 100%;
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: end;
-
-    .animatedSearchBar {
-      padding: 1em;
-      border: none;
-      width: 100%;
-      border-radius: 0.7rem;
-      font-style: inherit;
-      color: inherit;
-      background-color: rgb(157, 215, 252);
-
-      &:focus {
-        outline: none;
-      }
-    }
-    .animatedSearchBar::placeholder {
-      animation: typing 3s steps(3, end) infinite;
-      @keyframes typing {
-        from {
-          width: 0;
-        }
-        to {
-          width: 100%;
-        }
-      }
-    }
-
-    button {
-      border: none;
-      border-radius: 0.4em;
-      background-color: transparent;
-      // margin-top: 10px;
-      margin-right: 0.5rem;
-      padding: 0.4rem 0.75rem 0.4rem 0.75rem;
-      background-color: rgb(0, 94, 255);
-      // height: 1rem;
-      font-weight: 600;
-      position: absolute;
-      color: white;
-    }
+    background-color: transparent;
   }
 }

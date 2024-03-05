@@ -1,0 +1,34 @@
+.Wrapper {
+  // initiating flex grid
+  display: grid;
+  // setting it to columns and defining the with of columns
+  // fr is a unit specific to flex grid that lets you set the size as a fraction of the total child components.
+  // for example 1fr with 5 child components sets a child component to 1/5
+  // you can set the size for specific children by ordering from left to right
+  // repeat repeats the sizing for a set amount of columns
+  grid-template-columns: repeat(1, 2fr) 1fr;
+  // grid-auto-rows sets the height of each row to a value
+  grid-auto-rows: minmax(1rem, 3rem);
+  // this makes a consistent gap of .5rem between all the children boxes
+  gap: 0.5rem;
+}
+
+.box1 {
+  // this lets us control the size of each child container. the spacing is determined by the amount of grid lines
+  // for example box1 ends with a colum width that stretches to the with of 3 boxes but 4 grid lines
+  grid-column-start: 1;
+  grid-column-end: 4;
+  grid-row-start: 1;
+  grid-row-end: 2;
+}
+
+.box2 {
+  grid-column-start: 1 / 2;
+  grid-column-end: 2;
+}
+
+.box4 {
+  // this code accomplishes the same as box1 just in a more concise format
+  grid-column: 1/4;
+  grid-row: 3/4;
+}

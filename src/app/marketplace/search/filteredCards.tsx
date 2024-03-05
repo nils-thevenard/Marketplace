@@ -5,8 +5,10 @@ import { useState } from "react";
 import CourseCards from "./courseCards";
 import DATA, { Category, Course } from "./data";
 import styles from "./filters.module.scss";
+
 import notSelected from "../../../../public/notSelected.svg";
 import selected from "../../../../public/selected.svg";
+import arrowRight from "../../../../public/arrowRight.svg";
 import Image from "next/image";
 
 const FilteredCards: React.FC = () => {
@@ -96,6 +98,7 @@ const FilteredCards: React.FC = () => {
           <button onClick={() => setSearchText("")}>Search</button>
         </form>
       </div>
+      {/* ________________________________category filters_____________________________________________________________ */}
       <div className={styles.CategoryButtonParent}>
         <div className={styles.All}>All</div>
 
@@ -109,10 +112,10 @@ const FilteredCards: React.FC = () => {
         >
           <div className={styles.checkbox}>
             {searchCategory.includes("A") && (
-              <Image src={selected} alt="checkbox" width={10} height={10} />
+              <Image src={selected} alt="checkbox" width={20} height={20} />
             )}
             {searchCategory.includes("A") === false && (
-              <Image src={notSelected} alt="checkbox" width={10} height={10} />
+              <Image src={notSelected} alt="checkbox" width={20} height={20} />
             )}
           </div>
           Category A
@@ -128,10 +131,10 @@ const FilteredCards: React.FC = () => {
         >
           <div className={styles.checkbox}>
             {searchCategory.includes("B") && (
-              <Image src={selected} alt="checkbox" width={10} height={10} />
+              <Image src={selected} alt="checkbox" width={20} height={20} />
             )}
             {searchCategory.includes("B") === false && (
-              <Image src={notSelected} alt="checkbox" width={10} height={10} />
+              <Image src={notSelected} alt="checkbox" width={20} height={20} />
             )}
           </div>
           Category B
@@ -145,17 +148,19 @@ const FilteredCards: React.FC = () => {
         >
           <div className={styles.checkbox}>
             {searchCategory.includes("C") && (
-              <Image src={selected} alt="checkbox" width={10} height={10} />
+              <Image src={selected} alt="checkbox" width={20} height={20} />
             )}
             {searchCategory.includes("C") === false && (
-              <Image src={notSelected} alt="checkbox" width={10} height={10} />
+              <Image src={notSelected} alt="checkbox" width={20} height={20} />
             )}
           </div>
           Category C
         </button>
-        <button className={styles.arrow}> arw</button>
+        <div className={styles.arrow}>
+          <Image src={arrowRight} alt="arrowRight" height={30} width={30} />
+        </div>
       </div>
-      {/*_________________________companies_____________________________ */}
+      {/*_________________________company filters_____________________________ */}
 
       <div className={styles.CompanyButtonParent}>
         <div className={styles.AllProviders}>All Providers</div>
@@ -169,10 +174,10 @@ const FilteredCards: React.FC = () => {
         >
           <div className={styles.checkbox}>
             {searchCompany.includes("Dacreed") && (
-              <Image src={selected} alt="checkbox" width={10} height={10} />
+              <Image src={selected} alt="checkbox" width={20} height={20} />
             )}
             {searchCompany.includes("Dacreed") === false && (
-              <Image src={notSelected} alt="checkbox" width={10} height={10} />
+              <Image src={notSelected} alt="checkbox" width={20} height={20} />
             )}
           </div>
           Dacreed
@@ -187,10 +192,10 @@ const FilteredCards: React.FC = () => {
         >
           <div className={styles.checkbox}>
             {searchCompany.includes("Maccas") && (
-              <Image src={selected} alt="checkbox" width={10} height={10} />
+              <Image src={selected} alt="checkbox" width={20} height={20} />
             )}
             {searchCompany.includes("Maccas") === false && (
-              <Image src={notSelected} alt="checkbox" width={10} height={10} />
+              <Image src={notSelected} alt="checkbox" width={20} height={20} />
             )}
           </div>
           Maccas
@@ -205,15 +210,29 @@ const FilteredCards: React.FC = () => {
         >
           <div className={styles.checkbox}>
             {searchCompany.includes("Jims coding") && (
-              <Image src={selected} alt="checkbox" width={10} height={10} />
+              <Image src={selected} alt="checkbox" width={20} height={20} />
             )}
             {searchCompany.includes("Jims coding") === false && (
-              <Image src={notSelected} alt="checkbox" width={10} height={10} />
+              <Image src={notSelected} alt="checkbox" width={20} height={20} />
             )}
           </div>
           Jims coding
         </button>
-        <button className={styles.arrow}> arw </button>
+        <div className={styles.arrow}>
+          <Image src={arrowRight} alt="arrowRight" height={30} width={30} />
+        </div>
+      </div>
+      {/* ____________________________________________________________________________________________________________________ */}
+      <div className={styles.resetAllContainer}>
+        <div
+          onClick={() => {
+            setSearchCategory([]);
+            setSearchCompany([]);
+          }}
+          className={styles.resetAll}
+        >
+          Reset All
+        </div>
       </div>
       <div className={styles.returnedCourseCount}>
         {filteredArray.length} courses returned from your above criteria:
