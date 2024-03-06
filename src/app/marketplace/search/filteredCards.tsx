@@ -47,8 +47,10 @@ const FilteredCards: React.FC = () => {
     if (searchText === "") {
       return filterCompany(filteredArray, searchCompany);
     }
-    const result = courses.filter((c) =>
-      c.description.toLowerCase().includes(searchText.toLowerCase())
+    const result = courses.filter(
+      (c) =>
+        c.description.toLowerCase().includes(searchText.toLowerCase()) ||
+        c.company.toLowerCase().includes(searchText.toLowerCase())
     );
     // console.log("SEARCH FILTER RESULT", result);
     return result;

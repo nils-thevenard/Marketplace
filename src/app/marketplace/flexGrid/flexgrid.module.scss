@@ -1,4 +1,4 @@
-.Wrapper {
+.flexGrid1 {
   // initiating flex grid
   display: grid;
   // setting it to columns and defining the with of columns
@@ -11,24 +11,83 @@
   grid-auto-rows: minmax(1rem, 3rem);
   // this makes a consistent gap of .5rem between all the children boxes
   gap: 0.5rem;
+  margin-bottom: 1rem;
+
+  .box1 {
+    // this lets us control the size of each child container. the spacing is determined by the amount of grid lines
+    // for example box1 ends with a colum width that stretches to the with of 3 boxes but 4 grid lines
+    grid-column-start: 1;
+    grid-column-end: 4;
+    grid-row-start: 1;
+    grid-row-end: 2;
+  }
+
+  .box2 {
+    grid-column-start: 1 / 2;
+    grid-column-end: 2;
+  }
+
+  .box4 {
+    // this code accomplishes the same as box1 just in a more concise format
+    grid-column: 1/4;
+    grid-row: 3/4;
+  }
+
+  div {
+    background-color: rgb(255, 174, 0);
+    border-radius: 0.5rem;
+  }
 }
 
-.box1 {
-  // this lets us control the size of each child container. the spacing is determined by the amount of grid lines
-  // for example box1 ends with a colum width that stretches to the with of 3 boxes but 4 grid lines
-  grid-column-start: 1;
-  grid-column-end: 4;
-  grid-row-start: 1;
-  grid-row-end: 2;
-}
+.flexGrid2 {
+  //media queries to change the grid template position depending on the with of the screen
+  @media screen and (max-width: 700px) {
+    grid-template-areas:
+      "a "
+      "b "
+      "c"
+      "d";
+  }
+  @media screen and (max-width: 400px) {
+    grid-template-areas:
+      "d"
+      "c"
+      "b"
+      "a";
+  }
+  display: grid;
+  grid-template-rows: repeat(3, 3rem);
+  grid-template-columns: repeat(3fr);
+  // grid template areas is a super easy way of positioning children.
+  //essentially what we do is visually map out the position of each child in strings and
+  //this is then translated onto the children by setting the children to a certain letter or word from the template
+  grid-template-areas:
+    "a b"
+    "a c"
+    "d d";
+  gap: 0.5rem;
 
-.box2 {
-  grid-column-start: 1 / 2;
-  grid-column-end: 2;
-}
+  .box1 {
+    grid-area: a;
+    background-color: green;
+  }
+  .box2 {
+    grid-area: b;
+    background-color: gray;
+  }
+  .box3 {
+    grid-area: c;
+    background-color: red;
+  }
+  .box4 {
+    grid-area: d;
+    background-color: yellow;
+    justify-items: center;
+    align-items: center;
 
-.box4 {
-  // this code accomplishes the same as box1 just in a more concise format
-  grid-column: 1/4;
-  grid-row: 3/4;
+    // border-radius: 0.5rem;
+    .numberinBox4 {
+      justify-self: center;
+    }
+  }
 }
