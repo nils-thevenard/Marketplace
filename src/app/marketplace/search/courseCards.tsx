@@ -1,7 +1,9 @@
 import { useState } from "react";
 import styles from "./courseCard.module.scss";
-// import styles from "./courseCardFlexBox.module.scss";
+
 import { Course } from "./data";
+import SmallCard from "./smallCard";
+import BigCard from "./bigCard";
 // update logo to import corresponding logo
 //_______________________________
 // the on click function works by storing a function within the Brackets after set is expanded.
@@ -18,80 +20,27 @@ const CourseCard: React.FC<{ course: Course }> = ({ course }) => {
 
   return (
     <div>
-      {isExpanded === false && (
-        <div
-          onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
-          className={styles.card}
-          key={course.id}
-        >
-          <div className={styles.cardHeading}>
-            <div className={styles.title}>{course.company}</div>
-            <div className={styles.logo}> LOGO</div>
+      <div>
+        {isExpanded === false && (
+          <div
+            onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+            key={course.id}
+          >
+            <SmallCard course={course} />
           </div>
-          <div className={styles.content}>
-            <div className={styles.category}>Category {course.category}</div>
+        )}
+      </div>
 
-            <div className={styles.unitStandard}>
-              <div>NZQA 11551</div>
-              <div>Level 5 (10 credits)</div>
-            </div>
-            <div className={styles.descriptionAndTimeFrame}>
-              <div>Time: Within X weeks of enrollment</div>
-              <div>Description: {course.description}</div>
-            </div>
+      <div>
+        {isExpanded && (
+          <div
+            onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
+            key={course.id}
+          >
+            <BigCard course={course} />
           </div>
-          <div className={styles.costAndEnroll}>
-            <div className={styles.cost}>
-              <h1>${course.price}</h1>
-              <h2>(plus GST)</h2>
-            </div>
-
-            <button className={styles.enrollButton}>Enroll Now</button>
-          </div>
-        </div>
-      )}
-      {/* ___________________________expanded card________________________________________ */}
-      {isExpanded && (
-        <div
-          onClick={() => setIsExpanded((isExpanded) => !isExpanded)}
-          className={styles.expandedCard}
-          key={course.id}
-        >
-          <div className={styles.category}>
-            Category {course.category} {course.company}
-          </div>
-
-          {/* _______ */}
-
-          <div className={styles.leftContent}>
-            <div className={styles.description}>
-              Description: {course.description}
-            </div>
-            <div className={styles.costAndEnroll}>
-              <div className={styles.cost}>
-                <h1>${course.price}</h1>
-                <h2>(plus GST)</h2>
-              </div>
-            </div>
-          </div>
-          {/* ___________ */}
-          <div className={styles.rightContent}>
-            <div className={styles.logo}> LOGO</div>
-            <div className={styles.unitStandard}>
-              <div>NZQA expanded</div>
-              <div>Level 5 (10 credits)</div>
-            </div>
-
-            <div className={styles.descriptionAndTimeFrame}>
-              Time: Within X weeks of enrollment
-            </div>
-
-            <div className={styles.buttonBox}>
-              <button className={styles.enrollButton}>Enroll Now</button>
-            </div>
-          </div>
-        </div>
-      )}
+        )}
+      </div>
     </div>
   );
 };
