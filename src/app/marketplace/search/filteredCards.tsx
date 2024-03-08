@@ -16,7 +16,7 @@ const FilteredCards: React.FC = () => {
   const [searchCategory, setSearchCategory] = useState<Category[]>([]);
   const [searchCompany, setSearchCompany] = useState<string[]>([]);
   const [searchText, setSearchText] = useState<string | "">("");
-  const [filtersButton, setFiltersButton] = useState<boolean>(false);
+  const [filtersButton, setFiltersButton] = useState<boolean>(true);
   const [width, setWidth] = useState(window.innerWidth);
 
   // useEffect is used here to watch the screen size
@@ -146,27 +146,39 @@ const FilteredCards: React.FC = () => {
 
   const MobileFilters = () => {
     return (
-      <div>
+      <div className={styles.mobileFilters}>
         {filtersButton === true && (
-          <div className={styles.mobileFilters}>
-            <div>
+          <div className={styles.allFiltersContainer}>
+            <div className={styles.mobileCategoryFilters}>
               <CategoryFilterButton category="A" />
               <CategoryFilterButton category="B" />
               <CategoryFilterButton category="C" />
             </div>
 
-            <div>
+            <div className={styles.mobileCompanyFilters}>
               <CompanyFilterButton name="Dacreed" />
               <CompanyFilterButton name="Maccas" />
               <CompanyFilterButton name="Jims coding" />
             </div>
+            <div className={styles.resetAll}>
+              <div
+                onClick={() => {
+                  setSearchCategory([]);
+                  setSearchCompany([]);
+                }}
+              >
+                Reset All
+              </div>
+            </div>
+
             <button
+              className={styles.showResultsButton}
               onClick={() => {
                 setFiltersButton(!filtersButton);
                 console.log("the value of filters button", filtersButton);
               }}
             >
-              hide the popup
+              Show {filteredArray.length} courses
             </button>
           </div>
         )}
@@ -178,16 +190,26 @@ const FilteredCards: React.FC = () => {
   return (
     <div className={styles.parentDiv}>
       <MobileFilters />
+
       <div
         className={`${styles.filters} ${
           filtersButton === true && styles.filterBlur
         }`}
       >
         <div className={styles.searchFilters}>
-          <div className={styles.pageHeading}>
-            {searchText == "" && <h1>Course Marketplace</h1>}
-            {searchText == "" && <h2>Grow continuously, succeed infinitely</h2>}
-          </div>
+          {width < 700 && (
+            <div className={styles.mobilePageHeading}>
+              {searchText == "" && <div>Course Marketplace</div>}
+            </div>
+          )}
+          {width > 700 && (
+            <div className={styles.pageHeading}>
+              {searchText == "" && <h1>Course Marketplace</h1>}
+              {searchText == "" && (
+                <h2>Grow continuously, succeed infinitely</h2>
+              )}
+            </div>
+          )}
           <form className={styles.searchBarParent}>
             <input
               className={styles.animatedSearchBar}

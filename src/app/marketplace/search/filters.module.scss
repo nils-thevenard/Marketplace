@@ -3,25 +3,76 @@
   justify-content: center;
 
   .mobileFilters {
+    margin-top: 3rem;
     background-color: white;
-    // opacity: 0.2;
-    width: 100vw;
-    height: 100vh;
+    // opacity: 0.4;
+    width: 70%;
     position: absolute;
     z-index: 2;
 
-    .button {
-      background-color: #eef5ff;
-      border: 1px solid #1e53d9;
-      border-radius: 0.5rem;
-      font-weight: 600;
+    .allFiltersContainer {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 5rem;
+      grid-template-areas:
+        "a a"
+        "b b"
+        "c d";
+      row-gap: 4rem;
+      padding: 2rem;
+      border-radius: 1rem;
+      border: 2px solid #03c38d;
 
-      display: flex;
-      align-items: center;
-      padding: 0.7rem 1rem 0.7rem 1rem;
+      .mobileCategoryFilters {
+        grid-area: a;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .mobileCompanyFilters {
+        grid-area: b;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+      .button {
+        background-color: #eef5ff;
+        border: 1px solid #1e53d9;
+        border-radius: 0.5rem;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        padding: 0.7rem 1rem 0.7rem 1rem;
 
-      .checkbox {
-        margin-right: 0.5rem;
+        .checkbox {
+          margin-right: 0.5rem;
+        }
+      }
+      .active {
+        background-color: #b3eddd;
+        border: 2px solid #03c38d;
+      }
+      .resetAll {
+        height: 1.75rem;
+        color: #1e53d9;
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+        &:hover {
+          cursor: pointer;
+        }
+      }
+      .showResultsButton {
+        border: none;
+        border-radius: 0.5rem;
+        margin: 1rem;
+        padding: 0.4rem 0.75rem 0.4rem 0.75rem;
+        background-color: rgb(0, 94, 255);
+        font-weight: 600;
+        font-size: 1rem;
+        color: white;
       }
     }
   }
@@ -39,6 +90,15 @@
       flex-direction: column;
       width: 75vw;
       align-items: center;
+      .mobilePageHeading {
+        width: 100vw;
+        display: flex;
+        justify-content: flex-start;
+        color: rgb(0, 94, 255);
+        font-size: 2rem;
+        margin-left: 2rem;
+        margin-bottom: 3rem;
+      }
 
       .pageHeading {
         color: rgb(0, 94, 255);
@@ -81,7 +141,7 @@
         button {
           border: none;
           border-radius: 0.4em;
-          background-color: transparent;
+
           margin-left: -5rem;
           padding: 0.4rem 0.75rem 0.4rem 0.75rem;
           background-color: rgb(0, 94, 255);
@@ -98,7 +158,6 @@
         }
       }
     }
-
     .CategoryButtonParent {
       width: 75vw;
       display: grid;
@@ -107,56 +166,14 @@
       gap: 1rem;
       align-items: center;
       margin-top: 2rem;
-
-      .allButton {
-        grid-area: a;
-        border-radius: 0.5rem;
-        border: 0.15rem #1e53d9 solid;
-        color: #1e53d9;
-        font-weight: 500;
-        padding: 0.7rem 1rem 0.7rem 1rem;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
       .categoryFiltersContainer {
         grid-area: b;
         display: flex;
         justify-content: flex-start;
         gap: 1rem;
-        .button {
-          background-color: #eef5ff;
-          border: 1px solid #1e53d9;
-          border-radius: 0.5rem;
-          font-weight: 600;
-
-          display: flex;
-          align-items: center;
-          padding: 0.7rem 1rem 0.7rem 1rem;
-
-          .checkbox {
-            margin-right: 0.5rem;
-          }
-        }
-        .active {
-          background-color: #b3eddd;
-          border: 2px solid #03c38d;
-        }
-      }
-
-      .arrow {
-        grid-area: c;
-        border-radius: 0.5rem;
-        border: 0.15rem #1e53d9 solid;
-        padding: 0.3rem 0.5rem 0.2rem 0.5rem;
-        background-color: transparent;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
     }
+
     .CompanyButtonParent {
       width: 75vw;
       display: grid;
@@ -165,81 +182,96 @@
       gap: 1rem;
       align-items: center;
       margin-top: 2rem;
-
-      .AllProviders {
-        grid-area: a;
-        border-radius: 0.5rem;
-        border: 0.15rem #1e53d9 solid;
-        color: #1e53d9;
-        font-weight: 500;
-        padding: 0.7rem 1rem 0.7rem 1rem;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
       .companyFiltersContainer {
         display: flex;
         justify-content: flex-start;
         gap: 1rem;
-        .button {
-          background-color: #eef5ff;
-          border: 1px solid #1e53d9;
-          border-radius: 0.5rem;
-          font-weight: 600;
-          display: flex;
-          align-items: center;
-          padding: 0.7rem 1rem 0.7rem 1rem;
-
-          .checkbox {
-            margin-right: 0.5rem;
-          }
-        }
-        .active {
-          background-color: #b3eddd;
-          border: 2px solid #03c38d;
-        }
-      }
-
-      .arrow {
-        grid-area: c;
-        border-radius: 0.5rem;
-        border: 0.15rem #1e53d9 solid;
-        padding: 0.3rem 0.5rem 0.2rem 0.5rem;
-        background-color: transparent;
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
       }
     }
-    .resetAllContainer {
-      width: 100%;
+
+    .allButton {
+      grid-area: a;
+      border-radius: 0.5rem;
+      border: 0.15rem #1e53d9 solid;
+      color: #1e53d9;
+      font-weight: 500;
+      padding: 0.7rem 1rem 0.7rem 1rem;
+      height: 100%;
       display: flex;
-      justify-content: flex-end;
-      margin-top: 0.2rem;
-      .resetAll {
-        height: 1.75rem;
-        color: #1e53d9;
-        font-weight: 600;
-        &:hover {
-          cursor: pointer;
-        }
-      }
+      align-items: center;
+      justify-content: center;
     }
 
-    .returnedCourseCount {
-      color: #03c38d;
-      font-size: 1.25rem;
-      font-style: normal;
+    .AllProviders {
+      grid-area: a;
+      border-radius: 0.5rem;
+      border: 0.15rem #1e53d9 solid;
+      color: #1e53d9;
+      font-weight: 500;
+      padding: 0.7rem 1rem 0.7rem 1rem;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .button {
+      background-color: #eef5ff;
+      border: 1px solid #1e53d9;
+      border-radius: 0.5rem;
       font-weight: 600;
-      line-height: normal;
-      border: none;
+
+      display: flex;
+      align-items: center;
+      padding: 0.7rem 1rem 0.7rem 1rem;
+
+      .checkbox {
+        margin-right: 0.5rem;
+      }
+    }
+    .active {
+      background-color: #b3eddd;
+      border: 2px solid #03c38d;
+    }
+
+    .arrow {
+      grid-area: c;
+      border-radius: 0.5rem;
+      border: 0.15rem #1e53d9 solid;
+      padding: 0.3rem 0.5rem 0.2rem 0.5rem;
       background-color: transparent;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   }
-  .filterBlur {
-    filter: blur(3px);
+
+  .resetAllContainer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 0.2rem;
+    .resetAll {
+      height: 1.75rem;
+      color: #1e53d9;
+      font-weight: 600;
+      &:hover {
+        cursor: pointer;
+      }
+    }
   }
+
+  .returnedCourseCount {
+    color: #03c38d;
+    font-size: 1.25rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    border: none;
+    background-color: transparent;
+  }
+}
+.filterBlur {
+  filter: blur(3px);
 }
