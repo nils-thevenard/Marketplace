@@ -1,20 +1,12 @@
 .main {
   display: flex;
   flex-direction: column;
-  margin: 1rem;
+
   min-height: 100vh;
 
-  
-
-
-  .filteredCards{
+  .filteredCards {
     display: flex;
-justify-content: center;
-width: 100%;
-
-
+    justify-content: center;
+    width: 100vw;
   }
-  
 }
-
-

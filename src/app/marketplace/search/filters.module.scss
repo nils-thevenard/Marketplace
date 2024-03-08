@@ -1,190 +1,245 @@
-.filters {
+.parentDiv {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 75vw;
+  justify-content: center;
 
-  .searchFilters {
-    display: flex;
-    flex-direction: column;
-    width: 75vw;
-    align-items: center;
+  .mobileFilters {
+    background-color: white;
+    // opacity: 0.2;
+    width: 100vw;
+    height: 100vh;
+    position: absolute;
+    z-index: 2;
 
-    .pageHeading {
-      color: rgb(0, 94, 255);
-    }
+    .button {
+      background-color: #eef5ff;
+      border: 1px solid #1e53d9;
+      border-radius: 0.5rem;
+      font-weight: 600;
 
-    h1 {
-      font-size: 3rem;
-      font-weight: 500;
-      margin-bottom: 0px;
-      margin-top: 4rem;
-    }
-
-    h2 {
-      font-size: 0.9rem;
-      display: flex;
-      justify-content: center;
-      margin-top: 0.1rem;
-      margin-bottom: 3rem;
-    }
-
-    .searchBarParent {
-      width: 100%;
-      position: relative;
       display: flex;
       align-items: center;
-      justify-content: end;
+      padding: 0.7rem 1rem 0.7rem 1rem;
 
-      .animatedSearchBar {
-        padding: 1rem;
-        border: none;
+      .checkbox {
+        margin-right: 0.5rem;
+      }
+    }
+  }
+
+  .filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 75vw;
+    position: relative;
+    z-index: 1;
+
+    .searchFilters {
+      display: flex;
+      flex-direction: column;
+      width: 75vw;
+      align-items: center;
+
+      .pageHeading {
+        color: rgb(0, 94, 255);
+      }
+
+      h1 {
+        font-size: 3rem;
+        font-weight: 500;
+        margin-bottom: 0px;
+        margin-top: 4rem;
+      }
+
+      h2 {
+        font-size: 0.9rem;
+        display: flex;
+        justify-content: center;
+        margin-top: 0.1rem;
+        margin-bottom: 3rem;
+      }
+
+      .searchBarParent {
         width: 100%;
-        border-radius: 0.7rem;
-        font-style: inherit;
-        color: inherit;
-        background-color: rgb(157, 215, 252);
+        display: flex;
+        align-items: center;
 
-        &:focus {
-          outline: none;
+        .animatedSearchBar {
+          padding: 1rem;
+          border: none;
+          width: 100%;
+          border-radius: 0.7rem;
+          font-style: inherit;
+          color: inherit;
+          background-color: rgb(157, 215, 252);
+
+          &:focus {
+            outline: none;
+          }
+        }
+
+        button {
+          border: none;
+          border-radius: 0.4em;
+          background-color: transparent;
+          margin-left: -5rem;
+          padding: 0.4rem 0.75rem 0.4rem 0.75rem;
+          background-color: rgb(0, 94, 255);
+          font-weight: 600;
+          color: white;
+        }
+
+        .filterIcon {
+          border: #03c38d solid 2px;
+          background-color: transparent;
+          border-radius: 50%;
+          padding: 0.4rem 0rem 0rem 0rem;
+          margin-left: 2rem;
+        }
+      }
+    }
+
+    .CategoryButtonParent {
+      width: 75vw;
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
+      grid-template-areas: "a b c";
+      gap: 1rem;
+      align-items: center;
+      margin-top: 2rem;
+
+      .allButton {
+        grid-area: a;
+        border-radius: 0.5rem;
+        border: 0.15rem #1e53d9 solid;
+        color: #1e53d9;
+        font-weight: 500;
+        padding: 0.7rem 1rem 0.7rem 1rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .categoryFiltersContainer {
+        grid-area: b;
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        .button {
+          background-color: #eef5ff;
+          border: 1px solid #1e53d9;
+          border-radius: 0.5rem;
+          font-weight: 600;
+
+          display: flex;
+          align-items: center;
+          padding: 0.7rem 1rem 0.7rem 1rem;
+
+          .checkbox {
+            margin-right: 0.5rem;
+          }
+        }
+        .active {
+          background-color: #b3eddd;
+          border: 2px solid #03c38d;
         }
       }
 
-      button {
-        border: none;
-        border-radius: 0.4em;
+      .arrow {
+        grid-area: c;
+        border-radius: 0.5rem;
+        border: 0.15rem #1e53d9 solid;
+        padding: 0.3rem 0.5rem 0.2rem 0.5rem;
         background-color: transparent;
-        // margin-top: 10px;
-        margin-right: 0.5rem;
-        padding: 0.4rem 0.75rem 0.4rem 0.75rem;
-        background-color: rgb(0, 94, 255);
-        // height: 1rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .CompanyButtonParent {
+      width: 75vw;
+      display: grid;
+      grid-template-columns: max-content 1fr max-content;
+      grid-template-areas: "a b c";
+      gap: 1rem;
+      align-items: center;
+      margin-top: 2rem;
+
+      .AllProviders {
+        grid-area: a;
+        border-radius: 0.5rem;
+        border: 0.15rem #1e53d9 solid;
+        color: #1e53d9;
+        font-weight: 500;
+        padding: 0.7rem 1rem 0.7rem 1rem;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .companyFiltersContainer {
+        display: flex;
+        justify-content: flex-start;
+        gap: 1rem;
+        .button {
+          background-color: #eef5ff;
+          border: 1px solid #1e53d9;
+          border-radius: 0.5rem;
+          font-weight: 600;
+          display: flex;
+          align-items: center;
+          padding: 0.7rem 1rem 0.7rem 1rem;
+
+          .checkbox {
+            margin-right: 0.5rem;
+          }
+        }
+        .active {
+          background-color: #b3eddd;
+          border: 2px solid #03c38d;
+        }
+      }
+
+      .arrow {
+        grid-area: c;
+        border-radius: 0.5rem;
+        border: 0.15rem #1e53d9 solid;
+        padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+        background-color: transparent;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+    }
+    .resetAllContainer {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 0.2rem;
+      .resetAll {
+        height: 1.75rem;
+        color: #1e53d9;
         font-weight: 600;
-        position: absolute;
-        color: white;
+        &:hover {
+          cursor: pointer;
+        }
       }
     }
-  }
 
-  .CategoryButtonParent {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    gap: 2rem;
-    align-items: center;
-    margin-top: 2rem;
-    position: relative;
-
-    .All {
-      //this element did not work when just selecting as h1?
-      border-radius: 0.4em;
-      border: 0.15rem #1e53d9 solid;
-      color: #1e53d9;
-      font-weight: 500;
-      padding: 0.7rem 1rem 0.7rem 1rem;
-    }
-
-    .button {
-      background-color: #eef5ff;
-      border: 1px solid #1e53d9;
-      border-radius: 0.5rem;
+    .returnedCourseCount {
+      color: #03c38d;
+      font-size: 1.25rem;
+      font-style: normal;
       font-weight: 600;
-
-      display: flex;
-      align-items: center;
-      padding: 0.7rem 1rem 0.7rem 1rem;
-      //   justify-content: space-between;
-
-      .checkbox {
-        margin-right: 0.5rem;
-      }
-    }
-
-    .arrow {
-      border-radius: 0.4em;
-      border: 0.15rem #1e53d9 solid;
-      font-weight: 500;
-      padding: 0.3rem 0.5rem 0.2rem 0.5rem;
+      line-height: normal;
+      border: none;
       background-color: transparent;
-      position: absolute;
-      right: 0;
-    }
-
-    .active {
-      background-color: #b3eddd;
-      border: 2px solid #03c38d;
     }
   }
-  .CompanyButtonParent {
-    display: flex;
-    width: 100%;
-    justify-content: flex-start;
-    gap: 2rem;
-    align-items: center;
-    margin-top: 2rem;
-    position: relative;
-
-    .AllProviders {
-      //this element did not work when just selecting as h1?
-      border-radius: 0.4em;
-      border: 0.15rem #1e53d9 solid;
-      color: #1e53d9;
-      font-weight: 500;
-      padding: 0.7rem 1rem 0.7rem 1rem;
-    }
-
-    .button {
-      background-color: #eef5ff;
-      border: 1px solid #1e53d9;
-      border-radius: 0.5rem;
-      font-weight: 600;
-      padding: 0.5rem;
-      display: flex;
-      align-items: center;
-      padding: 0.7rem 1rem 0.7rem 1rem;
-      //   justify-content: space-between;
-
-      .checkbox {
-        margin-right: 0.5rem;
-      }
-    }
-
-    .arrow {
-      border-radius: 0.4em;
-      border: 0.15rem #1e53d9 solid;
-      font-weight: 500;
-      padding: 0.3rem 0.5rem 0.2rem 0.5rem;
-      background-color: transparent;
-      position: absolute;
-      right: 0;
-    }
-
-    .active {
-      background-color: #b3eddd;
-      border: 2px solid #03c38d;
-    }
-  }
-  .resetAllContainer {
-    width: 100%;
-    display: flex;
-    justify-content: end;
-    margin-top: 0.2rem;
-    .resetAll {
-      height: 1.75rem;
-      color: #1e53d9;
-      font-weight: 600;
-    }
-  }
-
-  .returnedCourseCount {
-    color: #03c38d;
-
-    font-size: 1.25rem;
-    font-style: normal;
-    font-weight: 600;
-    line-height: normal;
-    border: none;
-
-    background-color: transparent;
+  .filterBlur {
+    filter: blur(3px);
   }
 }

@@ -3,7 +3,7 @@ import styles from "./flexgrid.module.scss";
 
 export default function FlexGrid() {
   return (
-    <div>
+    <div style={{ padding: "10px" }}>
       <div className={styles.flexGrid1}>
         <div className={styles.box1}>this is a test page for css flexgrid</div>
         <div className={styles.box2}>2</div>
