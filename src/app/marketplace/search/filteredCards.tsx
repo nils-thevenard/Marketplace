@@ -16,7 +16,7 @@ const FilteredCards: React.FC = () => {
   const [searchCategory, setSearchCategory] = useState<Category[]>([]);
   const [searchCompany, setSearchCompany] = useState<string[]>([]);
   const [searchText, setSearchText] = useState<string | "">("");
-  const [filtersButton, setFiltersButton] = useState<boolean>(true);
+  const [filtersButton, setFiltersButton] = useState<boolean>(false);
   const [width, setWidth] = useState(window.innerWidth);
 
   // useEffect is used here to watch the screen size
@@ -94,7 +94,13 @@ const FilteredCards: React.FC = () => {
     }
   };
 
-  const CategoryFilterButton: React.FC<string> = ({ category }) => {
+  type CategoryFilterButtonProps = {
+    category: "A" | "B" | "C";
+  };
+
+  const CategoryFilterButton: React.FC<CategoryFilterButtonProps> = ({
+    category,
+  }) => {
     return (
       <div>
         <button
@@ -113,13 +119,19 @@ const FilteredCards: React.FC = () => {
               <Image src={notSelected} alt="checkbox" width={20} height={20} />
             )}
           </div>
-          Category {category}
+          {category}
         </button>
       </div>
     );
   };
 
-  const CompanyFilterButton: React.FC<string> = ({ name }) => {
+  type CompanyFilterButtonProps = {
+    name: "Jims coding" | "Dacreed" | "Maccas";
+  };
+
+  const CompanyFilterButton: React.FC<CompanyFilterButtonProps> = ({
+    name,
+  }) => {
     return (
       <div>
         <button

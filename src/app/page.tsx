@@ -1,9 +1,9 @@
-import MainPage from "./marketplace/marketplacePage";
+import MarketplacePage from "./marketplace/marketplacePage";
 
 export default function Home() {
   return (
     <div>
-      <MainPage />
+      <MarketplacePage />
     </div>
   );
 }

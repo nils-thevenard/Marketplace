@@ -82,7 +82,7 @@
       }
       .enrollButton {
         display: flex;
-        justify-content: end;
+        justify-content: flex-end;
         background-color: #1e53d9;
         border-radius: 0.5em;
         color: white;
@@ -180,7 +180,7 @@
       .buttonBox {
         display: flex;
 
-        align-items: end;
+        align-items: flex-end;
 
         .enrollButton {
           background-color: #1e53d9;
@@ -198,107 +198,3 @@
     }
   }
 }
-
-// .expandedCard {
-//   width: 30rem;
-//   height: 19rem;
-//   font-weight: 300;
-//   margin-top: 3rem;
-//   border-radius: 3px;
-//   &:hover {
-//     box-shadow: 0 0 2px #a7a9a9;
-//   }
-//   border: 2px solid #03c38d;
-//   border-radius: 1rem;
-
-//   display: flex;
-//   flex-direction: column;
-//   align-items: center;
-//   .category {
-//     color: #092c4c;
-//     font-weight: 700;
-//     font-size: 1rem;
-//     margin-top: 1.5rem;
-//   }
-
-//   .content {
-//     display: flex;
-//     //   justify-content: space-between;
-//     height: 100%;
-//     padding: 1.5rem 0.5rem 1rem 2rem;
-
-//     .leftContent {
-//       display: flex;
-//       flex-direction: column;
-//       justify-content: space-between;
-//       padding-right: 1rem;
-//       .description {
-//         font-size: 0.75rem;
-//         font-weight: 500;
-//       }
-
-//       .costAndEnroll {
-//         display: flex;
-//         justify-content: start;
-
-//         margin-bottom: 1rem;
-
-//         .cost {
-//           display: flex;
-//           flex-direction: column;
-//           font-weight: 800;
-//           margin-left: 0.5rem;
-//           h1 {
-//             font-size: 1rem;
-//           }
-//           h2 {
-//             font-size: 0.5rem;
-//           }
-//         }
-//       }
-//     }
-
-//     .rightContent {
-//       display: flex;
-//       flex-direction: column;
-//       align-items: flex-start;
-//       height: 100%;
-
-//       .logo {
-//         width: 100%;
-
-//         font-size: 1.8em;
-//         margin-bottom: 1rem;
-//       }
-
-//       .unitStandard {
-//         font-weight: 500;
-//         font-size: 0.9rem;
-//         margin-bottom: 1rem;
-//       }
-//       .descriptionAndTimeFrame {
-//         font-size: 0.75rem;
-//         font-weight: 500;
-//         width: 90%;
-//         margin-bottom: 1rem;
-//       }
-//       .buttonBox {
-//         height: 100%;
-//         display: flex;
-//         flex-direction: column;
-//         justify-content: end;
-//         .enrollButton {
-//           background-color: #1e53d9;
-//           border-radius: 0.5em;
-//           color: white;
-//           font-weight: 500;
-//           padding: 1rem 1rem 1rem 1rem;
-//           border: none;
-//           &:hover {
-//             box-shadow: 0 0 10px #b7b7b7;
-//           }
-//         }
-//       }
-//     }
-//   }
-// }
