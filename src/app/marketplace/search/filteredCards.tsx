@@ -17,7 +17,13 @@ const FilteredCards: React.FC = () => {
   const [searchCompany, setSearchCompany] = useState<string[]>([]);
   const [searchText, setSearchText] = useState<string | "">("");
   const [filtersButton, setFiltersButton] = useState<boolean>(false);
-  const [width, setWidth] = useState(window.innerWidth);
+  const [width, setWidth] = useState(() => {
+    if (typeof window !== "undefined") {
+      return window.innerWidth;
+    } else {
+      return 0; // Set a default value if window is not defined
+    }
+  });
 
   // useEffect is used here to watch the screen size
   useEffect(() => {
